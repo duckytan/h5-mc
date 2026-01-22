@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#4a7c59"/>
-  <rect x="20" y="20" width="60" height="60" fill="#8b4513" stroke="#000" stroke-width="2"/>
-  <text x="50" y="55" font-family="Arial" font-size="40" fill="#fff" text-anchor="middle">M</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- 草方块样式 -->
+  <rect width="32" height="32" fill="#5D8A3C"/>
+  <rect x="0" y="0" width="32" height="8" fill="#4CAF50"/>
+  <!-- 像素点纹理 -->
+  <rect x="2" y="10" width="4" height="4" fill="#6B9B54" opacity="0.7"/>
+  <rect x="10" y="14" width="4" height="4" fill="#6B9B54" opacity="0.7"/>
+  <rect x="20" y="8" width="4" height="4" fill="#6B9B54" opacity="0.7"/>
+  <rect x="6" y="22" width="4" height="4" fill="#4A6B3A"/>
+  <rect x="18" y="20" width="4" height="4" fill="#4A6B3A"/>
+  <rect x="26" y="24" width="4" height="4" fill="#4A6B3A"/>
 </svg>

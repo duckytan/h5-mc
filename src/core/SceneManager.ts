@@ -20,8 +20,6 @@ export class SceneManager {
 
     this.world = new VoxelWorld(32);
     this.chunkManager = new ChunkManager(this.world, 32);
-
-    this.scene.add(this.chunkManager as any);
   }
 
   private setupRenderer(container: HTMLElement): void {
@@ -61,6 +59,11 @@ export class SceneManager {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  /** 公开的窗口大小调整方法 */
+  public handleResize(): void {
+    this.onWindowResize();
   }
 
   public getWorld(): VoxelWorld {

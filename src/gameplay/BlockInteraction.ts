@@ -13,13 +13,15 @@ export class BlockInteraction {
   private camera: THREE.Camera;
   private world: VoxelWorld;
   private chunkManager: ChunkManager;
+  private scene: THREE.Scene;
   private raycaster: THREE.Raycaster;
   private reachDistance: number;
 
-  constructor(camera: THREE.Camera, world: VoxelWorld, chunkManager: ChunkManager) {
+  constructor(camera: THREE.Camera, world: VoxelWorld, chunkManager: ChunkManager, scene: THREE.Scene) {
     this.camera = camera;
     this.world = world;
     this.chunkManager = chunkManager;
+    this.scene = scene;
     this.raycaster = new THREE.Raycaster();
     this.reachDistance = 8; // 最大交互距离
   }
@@ -31,7 +33,7 @@ export class BlockInteraction {
     this.raycaster.set(this.camera.position, direction);
 
     // 获取场景中所有可交互的对象
-    const intersects = this.raycaster.intersectObjects(this.chunkManager.scene.children, true);
+    const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
     if (intersects.length > 0 && intersects[0].distance < this.reachDistance) {
       const intersect = intersects[0];

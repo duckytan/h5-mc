@@ -297,6 +297,24 @@ cat dist/index.html | grep -o 'src="[^"]*"'
 
 ---
 
+## 相关链接
+
+- [GitHub Pages 官方文档](https://docs.github.com/en/pages)
+- [GitHub Actions 文档](https://docs.github.com/en/actions)
+- [Vite 部署指南](https://vitejs.dev/guide/static-deploy.html)
+
+---
+
+## 相关文档
+
+- [README.md](../README.md) - 项目概览
+- [DEVELOPMENT.md](./DEVELOPMENT.md) - 开发规范
+- [FEATURES.md](./FEATURES.md) - 功能清单
+- [DOCUMENT_CONSTITUTION.md](./DOCUMENT_CONSTITUTION.md) - **文档宪法**：创建/维护规范
+- [PROJECT_ANALYSIS.md](./PROJECT_ANALYSIS.md) - **项目分析**：功能对比、架构设计、扩展规划
+
+---
+
 **部署成功后，记得分享给朋友们一起玩！** 🎮✨
 
 ---

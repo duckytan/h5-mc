@@ -1,92 +1,107 @@
-# MC-H5 项目文档
+# CLAUDE.md
 
-> 🤖 AI 助手初始化于 2026-01-22 19:25
->
-> 本文档将随着项目开发持续更新
+AI assistant guidance for MC-H5 project.
 
-## 📋 项目概览
+## Quick Links
 
-- **项目名称**: MC-H5
-- **项目类型**: 待定
-- **开发阶段**: 初始化阶段
-- **最后更新**: 2026-01-22
+| Document | Purpose |
+|----------|---------|
+| [README.md](./README.md) | Project overview |
+| [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md) | Code style, project structure, build commands |
+| [docs/FEATURES.md](./docs/FEATURES.md) | Feature list and roadmap |
+| [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) | GitHub Pages deployment |
+| [docs/DOCUMENT_CONSTITUTION.md](./docs/DOCUMENT_CONSTITUTION.md) | **文档宪法**：创建/维护规范 |
+| [docs/PROJECT_ANALYSIS.md](./docs/PROJECT_ANALYSIS.md) | **项目分析**：功能对比、架构设计、扩展规划 |
 
-## 🏗️ 架构总览
-
-```mermaid
-graph TD
-    A[MC-H5 项目] --> B[待定模块]
-    A --> C[待定模块]
-```
-
-## 📁 目录结构
+## Architecture
 
 ```
-/root/mc-h5/
-├── CLAUDE.md                    # 本文档
-├── .claude/                     # Claude 配置目录
-│   └── settings.local.json     # 本地权限配置
-└── [待添加项目文件]
+src/
+├── core/           # VoxelWorld, ChunkManager, SceneManager, MaterialManager
+├── gameplay/       # PlayerController, BlockInteraction
+├── world/          # TerrainGenerator
+├── ui/             # GameUI
+└── main.ts         # Entry point
 ```
 
-## 🎯 项目愿景
+## Build Commands
 
-**待定** - 请根据实际项目需求填写
+```bash
+npm run dev       # Development server
+npm run build     # Production build
+npm run preview   # Preview build
+```
 
-## 🔧 技术栈
+## Key Conventions
 
-**待定** - 项目启动后确定
+- **Strict TypeScript**: No `as any`, `@ts-ignore`
+- **Naming**: Classes PascalCase, methods camelCase
+- **Three.js**: Use `THREE.` prefix, dispose resources
+- **Chunk size**: 32x32x32 voxels with face culling
 
-## 📚 模块索引
+## Testing
 
-暂无模块
+No test framework configured. Use Vitest when adding tests.
 
-## 📖 使用说明
+## References
 
-### 添加模块
-
-1. 创建新的功能模块目录
-2. 在模块目录中添加 `CLAUDE.md` 文档
-3. 更新根级 `CLAUDE.md` 中的模块索引
-
-### 文档规范
-
-- 所有代码文件应添加注释说明功能
-- 接口和 API 应有清晰文档
-- 定期更新架构图和模块说明
-
-## 🛠️ 开发规范
-
-### 🔍 开发前准备
-
-**重要工作流程：**
-1. **网络调研** - 每次开发前，先上网搜索相关的知识和代码
-2. **规范查询** - 使用 context7 mcp 搜索最佳实践和规范
-3. **知识整合** - 将调研结果融入开发方案
-
-### 代码质量
-
-- 遵循项目选择的编程规范
-- 添加单元测试
-- 代码审查前确保测试通过
-
-### 文档要求
-
-- 复杂逻辑必须添加注释
-- 公共 API 需要文档说明
-- 定期更新架构文档
+- [Three.js Documentation](https://threejs.org/docs/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Vite Documentation](https://vitejs.dev/guide/)
 
 ---
 
-## 🚀 下一步行动
+## 📜 文档宪法（强制执行）
 
-1. 确定项目类型和主要功能
-2. 选择技术栈
-3. 创建基础项目结构
-4. 添加核心模块
-5. 编写模块级 CLAUDE.md
+> **创建新文档前必须遵守的规则**。详见 [docs/DOCUMENT_CONSTITUTION.md](./docs/DOCUMENT_CONSTITUTION.md)
 
-## 📞 联系信息
+### 创建新文档前检查清单
 
-项目负责人：[待定]
-最后更新：2026-01-22 19:25
+```bash
+# 1. 扫描现有 Markdown 文件
+ls *.md
+
+# 2. 搜索相关主题
+grep -l "关键词" *.md
+```
+
+### 同类文档判定
+
+当新文档与现有文档满足以下任一条件时，**必须在原有文档添加内容**，而非创建新文档：
+
+| 条件 | 说明 |
+|------|------|
+| 主题重叠 ≥ 50% | 讨论相同领域或功能 |
+| 目标读者相同 | 都面向开发者或用户 |
+| 生命周期重叠 | 有效期内会被同时更新 |
+| 章节可合并 | 内容可无缝拼接 |
+
+### 强关联规则
+
+每个文档**至少**要有：
+
+1. **入口关联**：`README.md` 的链接
+2. **延伸关联**：指向更详细或相关的文档
+3. **双向引用**：被引用者添加反向引用
+
+**标准格式**（文档末尾）：
+
+```markdown
+## 相关文档
+
+- [文档名称](./文档路径.md) - 一句话说明关系
+```
+
+### 文档分类体系
+
+| 类别 | 文件 | 说明 |
+|------|------|------|
+| 入口文档 | `README.md` | 项目概览 |
+| 开发规范 | `docs/DEVELOPMENT.md` | 代码风格、构建 |
+| 功能文档 | `docs/FEATURES.md` | 特性清单 |
+| 部署文档 | `docs/DEPLOYMENT.md` | 部署流程 |
+| AI指南 | `CLAUDE.md` | AI助手指令 |
+| 文档规范 | `docs/DOCUMENT_CONSTITUTION.md` | 文档创建规则 |
+| 项目分析 | `docs/PROJECT_ANALYSIS.md` | 功能对比、架构设计 |
+
+**每个类别只保留一份主文档。**
