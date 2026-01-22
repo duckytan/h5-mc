@@ -1,0 +1,19 @@
+{
+  "name": "mc-h5",
+  "version": "1.0.0",
+  "description": "H5版本我的世界 - 基于WebGL的体素游戏",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.160.0",
+    "@types/three": "^0.160.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "typescript": "^5.3.0"
+  }
+}
