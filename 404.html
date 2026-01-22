@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MC-H5 - 页面未找到</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 6rem;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    p {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+    a {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: white;
+      color: #667eea;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 2rem;
+      transition: transform 0.3s;
+    }
+    a:hover {
+      transform: scale(1.05);
+    }
+    .game-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <script>
+    // GitHub Pages SPA 支持
+    // 重定向到根路径，由前端路由处理
+    window.location.href =
+      window.location.origin +
+      '/h5-mc/' +
+      window.location.pathname.replace('/h5-mc/', '').replace(/^\/+/, '');
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="game-icon">🎮</div>
+    <h1>404</h1>
+    <p>页面未找到</p>
+    <p style="font-size: 1rem; opacity: 0.8;">正在跳转到游戏主页...</p>
+    <a href="/h5-mc/">立即开始游戏</a>
+  </div>
+</body>
+</html>
