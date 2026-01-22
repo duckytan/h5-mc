@@ -1,6 +1,16 @@
 # MC-H5 - 我的世界浏览器版
 
-一个基于 WebGL 和 Three.js 开发的H5版我的世界游戏。
+<div align="center">
+
+🎮 **[立即开始游戏](https://duckytan.github.io/h5-mc/)** 🎮
+
+基于 WebGL 和 Three.js 开发的H5版我的世界游戏
+
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://duckytan.github.io/h5-mc/)
+[![GitHub stars](https://img.shields.io/github/stars/duckytan/h5-mc)](https://github.com/duckytan/h5-mc/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/duckytan/h5-mc)](https://github.com/duckytan/h5-mc/issues)
+
+</div>
 
 ## 🎮 功能特性
 
@@ -25,7 +35,28 @@
 - 🔄 更多工具和武器
 - 🔄 合成系统
 
-## 🚀 快速开始
+## 🎮 在线游戏
+
+### 🌐 立即游玩
+**[点击这里开始游戏](https://duckytan.github.io/h5-mc/)**
+
+无需安装，直接在浏览器中运行！
+
+### 🎯 快速操作指南
+- **W/A/S/D** - 移动
+- **鼠标** - 视角控制
+- **空格** - 跳跃
+- **左键** - 破坏方块
+- **右键** - 放置方块
+- **数字键1-4** - 切换方块类型
+
+## 💻 本地运行
+
+### 前置要求
+- Node.js 18+
+- npm 或 yarn
+
+### 🚀 快速开始
 
 ### 安装依赖
 ```bash
