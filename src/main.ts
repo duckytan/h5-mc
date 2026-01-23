@@ -6,6 +6,8 @@ import { BlockType } from './core/VoxelWorld';
 import { ItemRegistry } from './core/items/Item';
 import { PlayerInventory } from './gameplay/Inventory';
 import { InventoryUI } from './ui/InventoryUI';
+import { CraftingSystem } from './gameplay/Crafting';
+import { CraftingUI } from './ui/CraftingUI';
 
 /**
  * 游戏主类
@@ -24,6 +26,10 @@ class Game {
   private playerInventory!: PlayerInventory;
   /** 物品栏 UI */
   private inventoryUI!: InventoryUI;
+  /** 合成系统 */
+  private craftingSystem!: CraftingSystem;
+  /** 合成 UI */
+  private craftingUI!: CraftingUI;
   /** Canvas 容器 */
   private canvasContainer: HTMLElement;
   /** FPS 显示元素 */
@@ -40,6 +46,8 @@ class Game {
   private isPaused: boolean = false;
   /** 物品栏是否打开 */
   private isInventoryOpen: boolean = false;
+  /** 合成栏是否打开 */
+  private isCraftingOpen: boolean = false;
 
   constructor() {
     // 获取 DOM 元素
@@ -81,6 +89,10 @@ class Game {
 
     // 初始化物品栏 UI
     this.inventoryUI = new InventoryUI(this.playerInventory);
+
+    // 初始化合成系统
+    this.craftingSystem = new CraftingSystem();
+    this.craftingUI = new CraftingUI(this.craftingSystem);
 
     // 初始化地形生成
     this.terrainGenerator = new TerrainGenerator(world);
@@ -222,9 +234,15 @@ class Game {
         return;
       }
 
-      // 物品栏开关
+      // 物品栏开关 (E)
       if (e.code === 'KeyE') {
         this.toggleInventory();
+        return;
+      }
+
+      // 合成栏开关 (C)
+      if (e.code === 'KeyC') {
+        this.toggleCrafting();
         return;
       }
 
@@ -276,6 +294,23 @@ class Game {
     } else {
       // 关闭物品栏，锁定指针
       this.inventoryUI.hide();
+      this.canvasContainer.requestPointerLock();
+    }
+  }
+
+  /**
+   * 切换合成栏显示
+   */
+  private toggleCrafting(): void {
+    this.isCraftingOpen = !this.isCraftingOpen;
+
+    if (this.isCraftingOpen) {
+      // 打开合成栏，显示鼠标
+      document.exitPointerLock();
+      this.craftingUI.show();
+    } else {
+      // 关闭合成栏，锁定指针
+      this.craftingUI.hide();
       this.canvasContainer.requestPointerLock();
     }
   }
