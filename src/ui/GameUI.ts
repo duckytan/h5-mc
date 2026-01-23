@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 export interface GameUI {
   showCrosshair(): void;
   hideCrosshair(): void;
@@ -14,7 +12,6 @@ export class GameUIImpl implements GameUI {
   private fpsElement: HTMLElement;
   private coordsElement: HTMLElement;
   private blockElement: HTMLElement;
-  private messageElement: HTMLElement | null;
 
   constructor() {
     this.crosshairElement = document.getElementById('crosshair') as HTMLElement;
@@ -71,7 +68,7 @@ export class GameUIImpl implements GameUI {
 }
 
 export class BlockSelectorUI {
-  private container: HTMLElement;
+  private container!: HTMLElement;
   private selectedIndex: number = 0;
   private blockTypes: Array<{ type: number; name: string }> = [
     { type: 1, name: '草地方块' },

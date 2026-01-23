@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { VoxelWorld, BlockType } from '../core/VoxelWorld';
+import { VoxelWorld } from '../core/VoxelWorld';
 import { PhysicsSystem } from '../core/physics/PhysicsSystem';
 
 /**

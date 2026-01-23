@@ -34,7 +34,7 @@ export class TerrainGenerator {
     for (let x = 0; x < size; x++) {
       for (let z = 0; z < size; z++) {
         // 使用简单的噪声算法生成地形
-        const height = this.getHeight(x, z, size);
+        const height = this.getHeight(x, z);
 
         for (let y = 0; y < height; y++) {
           let blockType: BlockType;
@@ -53,7 +53,7 @@ export class TerrainGenerator {
     }
   }
 
-  private getHeight(x: number, z: number, size: number): number {
+  private getHeight(x: number, z: number): number {
     // 简单的噪声函数
     const scale1 = 0.05;
     const scale2 = 0.1;

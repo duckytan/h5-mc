@@ -4,15 +4,13 @@ import { ChunkManager } from './ChunkManager';
 
 export class SceneManager {
   public scene: THREE.Scene;
-  public camera: THREE.PerspectiveCamera;
-  public renderer: THREE.WebGLRenderer;
+  public camera!: THREE.PerspectiveCamera;
+  public renderer!: THREE.WebGLRenderer;
   private world: VoxelWorld;
   private chunkManager: ChunkManager;
-  private clock: THREE.Clock;
 
   constructor(container: HTMLElement) {
     this.scene = new THREE.Scene();
-    this.clock = new THREE.Clock();
 
     this.setupRenderer(container);
     this.setupCamera();

@@ -1,7 +1,5 @@
-import * as THREE from 'three';
-import { PlayerInventory } from '../gameplay/Inventory';
+import { PlayerInventory, InventoryEventType } from '../gameplay/Inventory';
 import { ItemStack } from '../core/items/Item';
-import { BlockRegistry } from '../core/blocks/BlockRegistry';
 
 /**
  * 物品栏 UI 元素接口
@@ -78,7 +76,7 @@ export class InventoryUI {
 
     const mainSlots: HTMLElement[] = [];
     for (let i = 0; i < 27; i++) {
-      const slot = this.createSlot(i, 'main');
+      const slot = this.createSlot(i);
       mainContainer.appendChild(slot);
       mainSlots.push(slot);
     }
@@ -102,7 +100,7 @@ export class InventoryUI {
 
     const hotbarSlots: HTMLElement[] = [];
     for (let i = 0; i < 9; i++) {
-      const slot = this.createSlot(i, 'hotbar');
+      const slot = this.createSlot(i);
       hotbarContainer.appendChild(slot);
       hotbarSlots.push(slot);
     }
@@ -122,7 +120,7 @@ export class InventoryUI {
   /**
    * 创建单个槽位元素
    */
-  private createSlot(index: number, type: 'main' | 'hotbar'): HTMLElement {
+  private createSlot(index: number): HTMLElement {
     const slot = document.createElement('div');
     slot.style.cssText = `
       width: 50px;
@@ -156,11 +154,11 @@ export class InventoryUI {
    */
   private bindEvents(): void {
     // 监听物品栏变化事件
-    this.inventory.addListener('selection_changed', () => {
+    this.inventory.addListener(InventoryEventType.SELECTION_CHANGED, () => {
       this.updateSelection();
     });
 
-    this.inventory.addListener('slot_changed', () => {
+    this.inventory.addListener(InventoryEventType.SLOT_CHANGED, () => {
       this.updateAllSlots();
     });
   }

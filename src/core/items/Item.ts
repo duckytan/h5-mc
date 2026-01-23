@@ -64,6 +64,14 @@ export interface ItemData {
   readonly maxStack: number;
   /** 物品类别 */
   readonly category: ItemCategory;
+  /** 工具类型（仅工具类） */
+  readonly toolType?: ToolType;
+  /** 挖掘速度（仅工具类） */
+  readonly miningSpeed?: number;
+  /** 伤害值（仅工具类） */
+  readonly damage?: number;
+  /** 有效挖掘方块（仅工具类） */
+  readonly effectiveBlocks?: BlockType[];
   /** 材质颜色（用于显示） */
   readonly color: number;
   /** 描述文本 */
@@ -296,7 +304,7 @@ export class ItemRegistry {
       toolType: ToolType.PICKAXE,
       miningSpeed: 2,
       damage: 2,
-      effectiveBlocks: [BlockType.STONE, BlockType.COAL_ORE, BlockType.IRON_ORE],
+      effectiveBlocks: [BlockType.STONE, BlockType.DIRT, BlockType.SAND],
       color: 0x9b7653,
       description: '基础挖掘工具'
     });

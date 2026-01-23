@@ -101,7 +101,7 @@ export class MaterialManager {
           resolve(texture);
         },
         undefined,
-        (error: Error) => reject(error)
+        (error: unknown) => reject(error as Error)
       );
     });
   }
@@ -164,14 +164,6 @@ export class MaterialManager {
     for (const [blockType, material] of this.materials) {
       const blockData = BlockRegistry.getBlockData(blockType);
       if (blockData?.textureUV) {
-        // 设置材质的纹理偏移
-        const image = this.textureAtlas!.image;
-        const textureSize = Math.max(image.width, image.height);
-        const tileCount = textureSize / 16;
-
-        const offsetX = blockData.textureUV.u / tileCount;
-        const offsetY = blockData.textureUV.v / tileCount;
-
         // 注意：这里简化处理，实际应该为每个方块创建独立的材质
         material.map = this.textureAtlas;
         material.needsUpdate = true;

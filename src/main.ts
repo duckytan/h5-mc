@@ -2,9 +2,8 @@ import { SceneManager } from './core/SceneManager';
 import { PlayerController } from './gameplay/PlayerController';
 import { BlockInteraction } from './gameplay/BlockInteraction';
 import { TerrainGenerator } from './world/TerrainGenerator';
-import { VoxelWorld, BlockType } from './core/VoxelWorld';
-import { BlockRegistry } from './core/blocks/BlockRegistry';
-import { ItemRegistry, ItemCategory } from './core/items/Item';
+import { BlockType } from './core/VoxelWorld';
+import { ItemRegistry } from './core/items/Item';
 import { PlayerInventory } from './gameplay/Inventory';
 import { InventoryUI } from './ui/InventoryUI';
 
@@ -14,29 +13,25 @@ import { InventoryUI } from './ui/InventoryUI';
  */
 class Game {
   /** 场景管理器 */
-  private sceneManager: SceneManager;
+  private sceneManager!: SceneManager;
   /** 玩家控制器 */
-  private player: PlayerController;
+  private player!: PlayerController;
   /** 方块交互系统 */
-  private blockInteraction: BlockInteraction;
+  private blockInteraction!: BlockInteraction;
   /** 地形生成器 */
-  private terrainGenerator: TerrainGenerator;
+  private terrainGenerator!: TerrainGenerator;
   /** 玩家物品栏 */
-  private playerInventory: PlayerInventory;
+  private playerInventory!: PlayerInventory;
   /** 物品栏 UI */
-  private inventoryUI: InventoryUI;
+  private inventoryUI!: InventoryUI;
   /** Canvas 容器 */
   private canvasContainer: HTMLElement;
-  /** HUD 元素 */
-  private hud: HTMLElement;
   /** FPS 显示元素 */
   private fpsElement: HTMLElement;
   /** 坐标显示元素 */
   private coordsElement: HTMLElement;
   /** 选中的方块类型显示元素 */
   private selectedBlockElement: HTMLElement;
-  /** 上一帧时间 */
-  private lastFrameTime: number = 0;
   /** 帧计数 */
   private frameCount: number = 0;
   /** FPS 更新时间 */
@@ -49,7 +44,6 @@ class Game {
   constructor() {
     // 获取 DOM 元素
     this.canvasContainer = document.getElementById('canvas-container') as HTMLElement;
-    this.hud = document.getElementById('hud') as HTMLElement;
     this.fpsElement = document.getElementById('fps') as HTMLElement;
     this.coordsElement = document.getElementById('coords') as HTMLElement;
     this.selectedBlockElement = document.getElementById('selected-block') as HTMLElement;
@@ -343,7 +337,8 @@ class Game {
 
 // 启动游戏
 window.addEventListener('DOMContentLoaded', () => {
-  const game = new Game();
+  // 启动游戏
+  new Game();
 
   // 隐藏加载提示，显示 HUD
   const loading = document.getElementById('loading');

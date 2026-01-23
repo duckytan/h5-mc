@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import { BlockType } from '../VoxelWorld';
 
 /**
@@ -317,7 +316,7 @@ export class BlockRegistry {
    */
   public static canBreak(type: BlockType): boolean {
     const data = this.blocks.get(type);
-    return data?.hardness ?? 0 >= 0;
+    return (data?.hardness ?? 0) >= 0;
   }
 
   /**

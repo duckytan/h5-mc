@@ -260,7 +260,6 @@ export class Inventory {
       return false;
     }
 
-    const oldItem = slot.item;
     slot.item = item;
 
     this.emit({
@@ -313,8 +312,10 @@ export class Inventory {
       fromSlot.item = null;
     } else if (toSlot.item.isSameItem(fromSlot.item) && !toSlot.item.isFull) {
       // 如果是同种物品且目标未满，合并
-      const toTransfer = toSlot.item.add(fromSlot.item.count);
-      if (fromSlot.item.count <= 0) {
+      const available = toSlot.item.add(fromSlot.item.count);
+      if (available > 0) {
+        fromSlot.item.count = available;
+      } else {
         fromSlot.item = null;
       }
     } else {
@@ -326,8 +327,8 @@ export class Inventory {
 
     this.emit({
       type: InventoryEventType.ITEM_MOVED,
-      fromSlot,
-      toSlot
+      fromSlot: fromSlot.index,
+      toSlot: toSlot.index
     });
 
     return true;
@@ -707,9 +708,9 @@ export class PlayerInventory {
   }
 
   /**
-   * 转换为 JSON
+   * 序列化物品栏为 JSON
    */
-  public toJSON(): object {
+  public toJSON(): { mainInventory: object; hotbar: object } {
     return {
       mainInventory: this.mainInventory.toJSON(),
       hotbar: this.hotbar.toJSON()
@@ -719,8 +720,9 @@ export class PlayerInventory {
   /**
    * 从 JSON 恢复
    */
-  public fromJSON(json: { mainInventory: object; hotbar: object }): void {
-    this.mainInventory.fromJSON(json as { slots: { id: string | null; count: number }[]; selectedSlot: number });
-    this.hotbar.fromJSON(json as { slots: { id: string | null; count: number }[]; selectedSlot: number });
+  public fromJSON(json: unknown): void {
+    const data = json as { mainInventory: { slots: { id: string | null; count: number }[]; selectedSlot: number }; hotbar: { slots: { id: string | null; count: number }[]; selectedSlot: number } };
+    this.mainInventory.fromJSON(data.mainInventory);
+    this.hotbar.fromJSON(data.hotbar);
   }
 }

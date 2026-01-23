@@ -186,7 +186,6 @@ export class AABB {
     newMin.y += dy;
     newMax.y += dy;
 
-    const dir = dy > 0 ? 1 : -1;
     return this.checkCollision(world, new THREE.Vector3(0, dy, 0), newMin, newMax);
   }
 
