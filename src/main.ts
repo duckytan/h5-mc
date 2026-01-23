@@ -8,6 +8,8 @@ import { PlayerInventory } from './gameplay/Inventory';
 import { InventoryUI } from './ui/InventoryUI';
 import { CraftingSystem } from './gameplay/Crafting';
 import { CraftingUI } from './ui/CraftingUI';
+import { WorldSaver } from './gameplay/WorldSaver';
+import { SaveLoadUI } from './ui/SaveLoadUI';
 
 /**
  * 游戏主类
@@ -30,6 +32,10 @@ class Game {
   private craftingSystem!: CraftingSystem;
   /** 合成 UI */
   private craftingUI!: CraftingUI;
+  /** 世界保存器 */
+  private worldSaver!: WorldSaver;
+  /** 保存/加载 UI */
+  private saveLoadUI!: SaveLoadUI;
   /** Canvas 容器 */
   private canvasContainer: HTMLElement;
   /** FPS 显示元素 */
@@ -46,6 +52,8 @@ class Game {
   private isPaused: boolean = false;
   /** 物品栏是否打开 */
   private isInventoryOpen: boolean = false;
+  /** 保存/加载界面是否打开 */
+  private isSaveLoadOpen: boolean = false;
   /** 合成栏是否打开 */
   private isCraftingOpen: boolean = false;
 
@@ -93,6 +101,10 @@ class Game {
     // 初始化合成系统
     this.craftingSystem = new CraftingSystem();
     this.craftingUI = new CraftingUI(this.craftingSystem);
+
+    // 初始化保存/加载系统
+    this.worldSaver = new WorldSaver(world, this.playerInventory);
+    this.saveLoadUI = new SaveLoadUI(this.worldSaver);
 
     // 初始化地形生成
     this.terrainGenerator = new TerrainGenerator(world);
@@ -246,6 +258,24 @@ class Game {
         return;
       }
 
+      // 保存游戏 (F5)
+      if (e.code === 'F5') {
+        this.quickSave();
+        return;
+      }
+
+      // 加载游戏 (F9)
+      if (e.code === 'F9') {
+        this.quickLoad();
+        return;
+      }
+
+      // 保存/加载界面 (S)
+      if (e.code === 'KeyS' && !e.ctrlKey) {
+        this.toggleSaveLoad();
+        return;
+      }
+
       // ESC 暂停游戏
       if (e.code === 'Escape') {
         this.isPaused = !this.isPaused;
@@ -312,6 +342,42 @@ class Game {
       // 关闭合成栏，锁定指针
       this.craftingUI.hide();
       this.canvasContainer.requestPointerLock();
+    }
+  }
+
+  /**
+   * 切换保存/加载界面
+   */
+  private toggleSaveLoad(): void {
+    this.isSaveLoadOpen = !this.isSaveLoadOpen;
+
+    if (this.isSaveLoadOpen) {
+      // 打开保存/加载界面，显示鼠标
+      document.exitPointerLock();
+      this.saveLoadUI.show();
+    } else {
+      // 关闭保存/加载界面，锁定指针
+      this.saveLoadUI.hide();
+      this.canvasContainer.requestPointerLock();
+    }
+  }
+
+  /**
+   * 快速保存
+   */
+  private quickSave(): void {
+    const playerPos = this.player.getPosition();
+    if (this.worldSaver.saveToStorage('quick_save')) {
+      console.log('游戏已保存');
+    }
+  }
+
+  /**
+   * 快速加载
+   */
+  private quickLoad(): void {
+    if (this.worldSaver.loadFromStorage('quick_save')) {
+      console.log('游戏已加载');
     }
   }
 
