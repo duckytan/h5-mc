@@ -1,0 +1,14 @@
+{
+  "filePath": "docs/PRD.md",
+  "currentVersion": 1,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2026-02-08T10:25:50.515Z",
+      "trigger": "initial",
+      "approvalId": "approval_1770546350505_qaqgb38w8",
+      "approvalTitle": "PRD 文档审批请求"
+    }
+  ]
+}

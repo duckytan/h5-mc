@@ -1,70 +1,54 @@
-# MC-H5 🎮
+# Minecraft H5 Web版
 
-Browser-based Minecraft clone built with **Three.js** and **TypeScript**.
+> 基于 Three.js 的高性能体素沙盒游戏
 
-## ✨ Features
+## 项目状态
 
-| Category | Status |
-|----------|--------|
-| 3D Voxel World | ✅ Complete |
-| First-Person Controls (WASD + Mouse) | ✅ Complete |
-| Block Place/Break | ✅ Complete |
-| Terrain Generation (Hills + Trees) | ✅ Complete |
-| Chunk System with Face Culling | ✅ Complete |
-| HUD (FPS + Coordinates) | ✅ Complete |
-| Inventory System | 🔄 In Progress |
-| Multiplayer | 📋 Planned |
-| Biomes & Structures | 📋 Planned |
+**版本**：2.0（重构中）  
+**技术栈**：Three.js + TypeScript + Vite  
+**状态**：[需求规划完成 → 开发中]
 
-## 🚀 Quick Start
+## 快速开始
 
 ```bash
-npm install
-npm run dev     # Development server
-npm run build   # Production build
+# 开发模式
+npm run dev
+
+# 构建生产版本
+npm run build
+
+# 预览构建
+npm run preview
 ```
 
-**Online Demo**: [https://duckytan.github.io/h5-mc/](https://duckytan.github.io/h5-mc/)
+## 文档
 
-## 📚 Documentation
+| 文档                                   | 说明               |
+| -------------------------------------- | ------------------ |
+| [需求文档](./docs/PRD.md)              | 产品需求与功能规划 |
+| [开发规范](./docs/DEVELOPMENT.md)      | 代码风格、构建命令 |
+| [部署文档](./docs/DEPLOYMENT.md)       | GitHub Pages 部署  |
+| [功能特性](./docs/FEATURES.md)         | 已完成/计划功能    |
+| [项目分析](./docs/PROJECT_ANALYSIS.md) | 架构设计与扩展规划 |
 
-| Document | Purpose |
-|----------|---------|
-| [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md) | Code style, project structure, build commands |
-| [docs/FEATURES.md](./docs/FEATURES.md) | Feature list and roadmap |
-| [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) | GitHub Pages deployment guide |
-| [docs/DOCUMENT_CONSTITUTION.md](./docs/DOCUMENT_CONSTITUTION.md) | **文档宪法**：创建/维护规范 |
-| [docs/PROJECT_ANALYSIS.md](./docs/PROJECT_ANALYSIS.md) | **项目分析**：功能对比、架构设计、扩展规划 |
+## 核心功能
 
-## 🗂️ Project Structure
+- 体素世界生成与渲染
+- 玩家控制与交互
+- 多生物群系地形
+- 光照与天气系统
+- 多人联机支持
+
+## 架构
 
 ```
 src/
-├── core/           # VoxelWorld, ChunkManager, SceneManager
-├── gameplay/       # PlayerController, BlockInteraction
-├── world/          # TerrainGenerator
-├── ui/             # GameUI
-└── main.ts         # Entry point
+├── core/           # 核心引擎
+├── gameplay/       # 游戏玩法
+├── world/          # 世界生成
+└── ui/             # 用户界面
 ```
 
-## 🎮 Controls
+## 历史版本
 
-| Key | Action |
-|-----|--------|
-| W/A/S/D | Move |
-| Space | Jump |
-| Mouse | Look |
-| Left Click | Break block |
-| Right Click | Place block |
-| 1-4 | Select block type |
-
-## 🛠️ Tech Stack
-
-- **Three.js** - 3D rendering
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **WebGL** - Graphics
-
-## 📄 License
-
-MIT License
+- [v1.0 (备份)](./backup/project_1.0/) - 原始实现
